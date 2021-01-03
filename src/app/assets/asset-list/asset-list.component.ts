@@ -21,5 +21,7 @@ export class AssetListComponent implements OnInit {
       (response : any) => {this.assets = response.content},
       err => console.log(err)
     );
+
+    
   }
 }
