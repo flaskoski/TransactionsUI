@@ -1,8 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AssetsModule } from './assets/assets.module';
+import { AssetListComponent } from './assets/asset-list/asset-list.component';
+
+
+
+const routes: Routes = [
+  {path:'assets', component: AssetListComponent},
+  {path:'**', component: AssetListComponent}
+];
 
 @NgModule({
   declarations: [
@@ -10,7 +19,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot(routes),
+    AssetsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
