@@ -9,8 +9,12 @@ import { AssetService } from '../asset/asset.service';
 })
 export class AssetListComponent implements OnInit {
 
+  totalPages: number = 0;
   title = 'TransactionsUI';
   assets : Asset[] = [];
+  totalItems = 0;
+  pageSize = 0;
+  currentPage = 0;
   
   //for injecting assetService object
   constructor(private assetService: AssetService){}
@@ -18,10 +22,16 @@ export class AssetListComponent implements OnInit {
   //requests
   ngOnInit(): void {
     this.assetService.getAssetsList().subscribe(
-      (response : any) => {this.assets = response.content},
+      (response : any) => {
+        this.assets = response.content
+        this.totalItems = response.totalElements;
+        this.pageSize = response.numberOfElements;
+        this.currentPage = response.pageNumber;
+        this.totalPages = response.totalPages;
+      },
       err => console.log(err)
     );
 
-    
+
   }
 }

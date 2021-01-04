@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
 export class AssetComponent{
 
     @Input() code='';
-    @Input() id='';
+    @Input() id = 0;
 }
